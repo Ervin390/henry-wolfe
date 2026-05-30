@@ -5,6 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L98Q47XHGY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-L98Q47XHGY');
+  </script>
+
   <!-- SEO -->
   <title>Read a Part - The Mindful Angler - Henry Wolfe</title>
   <meta name="description"
@@ -180,6 +190,23 @@
       <p><a href="mailto:contact@henrywolfe.com" class="footer-link">contact@henrywolfe.com</a></p>
     </div>
   </footer>
+
+  <!-- ===================== COOKIE BANNER ===================== -->
+  <div id="cookie-banner" class="cookie-banner" hidden>
+    <div class="cookie-banner-inner">
+      <div class="cookie-text">
+        <p>This site uses cookies (like Google Analytics) to understand how you read and navigate. No noise, just data.</p>
+      </div>
+      <button id="accept-cookies" class="btn-primary cookie-btn">Accept Cookies</button>
+    </div>
+    <!-- Decor: Vine / Leaf shape -->
+    <svg class="cookie-vine" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,100 C15,80 40,30 100,0" stroke="currentColor" fill="none" stroke-width="4" stroke-linecap="round"/>
+      <path d="M20,60 C35,60 50,45 60,30" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="60" cy="30" r="4" fill="currentColor"/>
+      <circle cx="100" cy="0" r="5" fill="currentColor"/>
+    </svg>
+  </div>
 
   <script src="main.js"></script>
 </body>

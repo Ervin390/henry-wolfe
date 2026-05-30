@@ -139,3 +139,28 @@ if (form) {
   });
 }
 
+// --- Cookie Banner ---
+const cookieBanner = document.getElementById('cookie-banner');
+const acceptBtn = document.getElementById('accept-cookies');
+
+if (cookieBanner && acceptBtn) {
+  // Check if user already accepted
+  if (!localStorage.getItem('hw_cookies_accepted')) {
+    // Small delay before showing banner for smoother entrance
+    setTimeout(() => {
+      cookieBanner.hidden = false;
+    }, 1500);
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('hw_cookies_accepted', 'true');
+    cookieBanner.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease';
+    cookieBanner.style.transform = 'translateY(100%)';
+    cookieBanner.style.opacity = '0';
+    setTimeout(() => {
+      cookieBanner.hidden = true;
+    }, 600);
+  });
+}
+
+
