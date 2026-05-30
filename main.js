@@ -106,7 +106,9 @@ if (mobileMenu) {
   });
 }
 
-// --- Newsletter Form (client-side stub) ---
+// --- Newsletter Form — Google Sheets via Apps Script ---
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwc3VwZPoutSfCyWVGQHvD5nac2kX8m5t1DIC7-8II52QZ38jUAB-u-z6UzJ6B3fsQi/exec';
+
 const form = document.getElementById('subscribe-form');
 const successMsg = document.getElementById('subscribe-success');
 
@@ -128,12 +130,36 @@ if (form) {
       btn.textContent = 'Subscribing…';
     }
 
-    // Stub — log payload, simulate short latency
-    console.log('[subscribe stub] payload:', { email });
-    await new Promise(resolve => setTimeout(resolve, 700));
+    try {
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
 
-    // Show success state
-    form.hidden = true;
-    if (successMsg) successMsg.hidden = false;
+      const data = await response.json();
+
+      if (data.result === 'success' || response.ok) {
+        form.hidden = true;
+        if (successMsg) successMsg.hidden = false;
+      } else {
+        throw new Error(data.message || 'Unknown error');
+      }
+    } catch (err) {
+      console.error('[subscribe] error:', err);
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Try Again';
+      }
+      // Show inline error
+      let errEl = document.getElementById('subscribe-error');
+      if (!errEl) {
+        errEl = document.createElement('p');
+        errEl.id = 'subscribe-error';
+        errEl.style.cssText = 'color:#c0392b;margin-top:0.5rem;font-size:0.9rem;';
+        form.appendChild(errEl);
+      }
+      errEl.textContent = 'Something went wrong. Please try again.';
+    }
   });
 }
