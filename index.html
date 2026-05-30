@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Henry Wolfe - Author</title>
+  <meta name="description" content="Quiet books for people who carry hard things. Author of The Mindful Angler." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Henry Wolfe - Author" />
+  <meta property="og:description"
+    content="Quiet books for people who carry hard things. Author of The Mindful Angler." />
+  <meta property="og:image" content="images/hero-river.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Henry Wolfe - Author" />
+  <meta name="twitter:description"
+    content="Quiet books for people who carry hard things. Author of The Mindful Angler." />
+  <meta name="twitter:image" content="images/hero-river.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===================== FOG INTRO ANIMATION ===================== -->
+  <div id="fog-overlay" aria-hidden="true">
+    <div class="fog-cloud fog-c1"></div>
+    <div class="fog-cloud fog-c2"></div>
+    <div class="fog-cloud fog-c3"></div>
+    <div class="fog-cloud fog-c4"></div>
+    <div class="fog-cloud fog-c5"></div>
+  </div>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header id="site-header">
+    <nav class="nav-inner">
+      <a href="index.html" class="wordmark">Henry Wolfe</a>
+      <div class="nav-links">
+        <a href="#books" class="nav-link">Books</a>
+        <a href="read.html" class="nav-link">Read a Part</a>
+        <a href="about.html" class="nav-link">About the Writer</a>
+        <a href="#subscribe" class="nav-link">Subscribe</a>
+      </div>
+      <button class="burger" id="burger-btn" aria-label="Open menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </nav>
+  </header>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="#books" class="mobile-nav-link">Books</a>
+    <a href="read.html" class="mobile-nav-link">Read a Part</a>
+    <a href="about.html" class="mobile-nav-link">About the Writer</a>
+    <a href="#subscribe" class="mobile-nav-link">Subscribe</a>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero">
+    <!-- TODO: Replace hero-river.jpg with a commissioned/licensed misty-river-at-dawn photograph -->
+    <div class="hero-image-wrap">
+      <img src="images/hero-river.jpg" alt="A misty river at dawn" class="hero-image" />
+      <div class="hero-overlay-quote">
+        <p class="overlay-quote-text"><em>"Between the cast and the wait,<br>something is already happening."</em></p>
+        <p class="overlay-quote-attr">Henry Wolfe</p>
+      </div>
+    </div>
+    <div class="hero-below fade-in">
+      <p class="hero-tagline"><em>"A rod is not meant to carry everything. Neither are you."</em></p>
+      <p class="hero-tagline-attr">From The Mindful Angler</p>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===================== FOR WHOM ===================== -->
+  <section id="for-whom" class="section fade-in">
+    <div class="container-narrow">
+      <p class="section-label">This Book Is For</p>
+      <div class="for-whom-grid">
+        <div class="for-whom-item">
+          <svg class="for-whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C5.8 7 7 6 8.5 6s2.7 1 4 1 2.7-1 4-1 2.7 1 4 1M2 12c.6.5 1.2 1 2.5 1 1.3 0 2.5-1 4-1s2.7 1 4 1 2.7-1 4-1 2.7 1 4 1M2 18c.6.5 1.2 1 2.5 1 1.3 0 2.5-1 4-1s2.7 1 4 1 2.7-1 4-1 2.7 1 4 1"/></svg>
+          <p>The person who keeps returning to water without being able to explain the return cleanly.</p>
+        </div>
+        <div class="for-whom-item">
+          <svg class="for-whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+          <p>The person who does not want a sermon.</p>
+        </div>
+        <div class="for-whom-item">
+          <svg class="for-whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
+          <p>The person who does not trust easy calm.</p>
+        </div>
+        <div class="for-whom-item">
+          <svg class="for-whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          <p>The angler carrying a hard week into the truck before dawn.</p>
+        </div>
+        <div class="for-whom-item">
+          <svg class="for-whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <p>The veteran. The exhausted parent. The one who has been told to rest and does not know how.</p>
+        </div>
+        <div class="for-whom-item wide">
+          <svg class="for-whom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          <p>The person who suspects that something useful happens between the truck and the bank but has never needed to name it before.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PULL QUOTE ===================== -->
+  <section id="pull-quote" class="section-pull fade-in">
+    <div class="pull-quote-inner">
+      <span class="pull-rule"></span>
+      <blockquote class="pull-quote-text">
+        "Nineteen short chapters.<br>Eight photographs.<br>Thirty days of reflection prompts."
+      </blockquote>
+      <span class="pull-rule"></span>
+    </div>
+  </section>
+
+
+
+  <!-- ===================== FEATURED BOOK ===================== -->
+  <section id="books" class="section fade-in">
+    <div class="container-wide">
+      <!-- FeaturedBook — props: title, subtitle, description, coverSrc, amazonUrl, sampleUrl -->
+      <!-- To add new books later, duplicate this .book-card block -->
+      <article class="book-card">
+        <div class="book-cover-col">
+          <!-- TODO: Replace the-mindful-angler-cover.jpg with final print cover -->
+          <a href="https://www.amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener" class="cover-link"
+            aria-label="Buy The Mindful Angler on Amazon">
+            <!-- TODO: Replace https://www.amazon.com/dp/PLACEHOLDER with real Amazon URL once ASIN is assigned -->
+            <img src="images/the-mindful-angler-cover.jpg" alt="The Mindful Angler - Book Cover" class="book-cover" />
+          </a>
+          <p class="available-label">Available Now</p>
+        </div>
+        <div class="book-text-col">
+          <p class="section-label">The New Book</p>
+          <h1 class="book-title">The Mindful Angler</h1>
+          <p class="book-subtitle"><em>A Companion Guide to Fishing for Stress, Burnout, and a Quieter Mind</em></p>
+          <div class="book-description">
+            <p>A quiet companion for the angler who carries more than gear to the water.</p>
+            <p>Not a how-to book. Not a self-help book. A book that stands beside you on the bank - between the cast and
+              the wait, between the strike and the release - and helps you notice what was already happening. Nineteen
+              short chapters, eight photographs, thirty days of reflection prompts, and one steady reminder: a rod is
+              not meant to carry everything. Neither are you.</p>
+            <p>For veterans, working professionals, exhausted parents, and anyone who has driven forty minutes before
+              dawn just to stand in cold water and breathe.</p>
+          </div>
+          <div class="book-ctas">
+            <!-- TODO: Replace PLACEHOLDER with real Amazon ASIN once assigned -->
+            <a href="https://www.amazon.com/dp/PLACEHOLDER" target="_blank" rel="noopener" class="btn-primary"
+              id="amazon-cta">
+              Buy on Amazon
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"
+                aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
+            <!-- TODO: Wire /sample route once sample chapter PDF is ready -->
+            <a href="/sample" class="btn-secondary">Read a sample chapter</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <!-- TODO: When book #2 ships, uncomment and populate:
+    <section id="more-books">
+      <div class="container-wide">
+        <p class="section-label">More Books by Henry Wolfe</p>
+        <div class="more-books-grid">
+          <article class="more-book-item">
+            <img src="images/book2-cover.jpg" alt="Book Title" />
+            <p class="more-book-title">Book Title</p>
+            <a href="https://amazon.com/dp/ASIN" class="more-book-link">Amazon →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    -->
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="section fade-in">
+    <div class="container-narrow">
+      <p class="section-label">About the Author</p>
+      <div class="about-text">
+        <p>Henry Wolfe writes quiet books for people who carry hard things. He has fished cold rivers, slow lakes, and
+          the bridges over both. He believes a good companion does not stand in front of you with instructions - it
+          stands beside you and keeps quiet when quiet is better.</p>
+        <p>He lives somewhere with water nearby. He answers his email slowly.</p>
+      </div>
+      <a href="about.html" class="about-more-link">More about the writer →</a>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section id="subscribe" class="section fade-in">
+    <div class="container-narrow">
+      <p class="section-label">Stay in Touch</p>
+      <h2 class="newsletter-heading"><em>"For the next book, and the occasional letter from the bank."</em></h2>
+
+      <!-- TODO: Wire to MailerLite or Formspree:
+           Option A (Formspree): <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+           Option B (MailerLite): embed MailerLite JS widget instead of this form
+           Note: if MailerLite sets a cookie, the disclosure below acts as notice. -->
+      <form id="subscribe-form" class="subscribe-form" novalidate>
+        <div class="form-row">
+          <input type="email" id="email-input" name="email" class="email-input" placeholder="your.email@somewhere.com"
+            autocomplete="email" required aria-label="Your email address" />
+          <button type="submit" class="btn-subscribe" id="subscribe-btn">Subscribe</button>
+        </div>
+        <p class="form-disclosure">No frequency promises. No marketing. Just word when there's a new book.</p>
+      </form>
+
+      <div id="subscribe-success" class="subscribe-success" hidden>
+        <p><em>Thank you. The water will still be there.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer">
+    <div class="footer-divider"></div>
+    <div class="footer-inner">
+      <p>© 2026 Henry Wolfe</p>
+      <p>Site by <span class="footer-muted">[TBD]</span></p>
+      <!-- TODO: Replace with actual contact address -->
+      <p><a href="mailto:contact@henrywolfe.com" class="footer-link">contact@henrywolfe.com</a></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

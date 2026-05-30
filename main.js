@@ -1,0 +1,139 @@
+/* ===========================================
+   HENRY WOLFE — AUTHOR SITE
+   main.js — v3
+   =========================================== */
+
+const FOG_DURATION = 9000; // ms — ultra-slow meditative duration with initial density phase
+
+// --- Forced Scroll to Top on Load/Refresh ---
+window.onbeforeunload = function() {
+  window.scrollTo(0, 0);
+};
+
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+
+// --- Sticky Header on Scroll ---
+const header = document.getElementById('site-header');
+if (header) {
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+}
+
+// --- Determine if we're on the home page ---
+const isHomePage = (() => {
+  const path = window.location.pathname;
+  return path.endsWith('index.html') || path.endsWith('/') || path === '';
+})();
+
+// --- Fade-in on Scroll ---
+function initFadeIn() {
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+
+  fadeEls.forEach(el => observer.observe(el));
+}
+
+// --- Fog Cleanup + Fade-in Init ---
+if (isHomePage) {
+  // Home page: wait for fog animation, then init fade-in
+  setTimeout(() => {
+    const fog = document.getElementById('fog-overlay');
+    if (fog) {
+      fog.addEventListener('animationend', () => fog.remove(), { once: true });
+      setTimeout(() => fog.remove(), 1200);
+    }
+    initFadeIn();
+  }, FOG_DURATION);
+} else {
+  // Non-home pages: remove fog immediately if it exists, init fade-in right away
+  const fog = document.getElementById('fog-overlay');
+  if (fog) fog.remove();
+  initFadeIn();
+}
+
+// --- Burger Menu ---
+const burgerBtn = document.getElementById('burger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileOverlay = document.getElementById('mobile-overlay');
+
+function openMobileMenu() {
+  burgerBtn.classList.add('open');
+  mobileMenu.classList.add('active');
+  mobileOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  burgerBtn.classList.remove('open');
+  mobileMenu.classList.remove('active');
+  mobileOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+if (burgerBtn) {
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('active');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+}
+
+if (mobileOverlay) {
+  mobileOverlay.addEventListener('click', closeMobileMenu);
+}
+
+// Close mobile menu when a link is clicked
+if (mobileMenu) {
+  mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+}
+
+// --- Newsletter Form (client-side stub) ---
+const form = document.getElementById('subscribe-form');
+const successMsg = document.getElementById('subscribe-success');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const emailInput = document.getElementById('email-input');
+    const email = emailInput ? emailInput.value.trim() : '';
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailInput?.focus();
+      return;
+    }
+
+    const btn = document.getElementById('subscribe-btn');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Subscribing…';
+    }
+
+    // Stub — log payload, simulate short latency
+    console.log('[subscribe stub] payload:', { email });
+    await new Promise(resolve => setTimeout(resolve, 700));
+
+    // Show success state
+    form.hidden = true;
+    if (successMsg) successMsg.hidden = false;
+  });
+}
