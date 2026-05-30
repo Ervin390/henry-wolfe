@@ -48,21 +48,21 @@ function initFadeIn() {
 }
 
 // --- Fog Cleanup + Fade-in Init ---
+// Fade-in starts immediately — fog overlays on top while content loads underneath
+initFadeIn();
+
 if (isHomePage) {
-  // Home page: wait for fog animation, then init fade-in
+  // Remove fog after animation completes
   setTimeout(() => {
     const fog = document.getElementById('fog-overlay');
     if (fog) {
       fog.addEventListener('animationend', () => fog.remove(), { once: true });
       setTimeout(() => fog.remove(), 1200);
     }
-    initFadeIn();
   }, FOG_DURATION);
 } else {
-  // Non-home pages: remove fog immediately if it exists, init fade-in right away
   const fog = document.getElementById('fog-overlay');
   if (fog) fog.remove();
-  initFadeIn();
 }
 
 // --- Burger Menu ---
@@ -131,11 +131,10 @@ if (form) {
     }
 
     try {
-      await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({ email })
+      // GET request with email as URL param — most reliable pattern for Apps Script (no CORS preflight)
+      await fetch(`${APPS_SCRIPT_URL}?email=${encodeURIComponent(email)}`, {
+        method: 'GET',
+        mode: 'no-cors'
       });
 
       // no-cors returns opaque response — treat completed fetch as success
