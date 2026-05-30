@@ -131,27 +131,22 @@ if (form) {
     }
 
     try {
-      const response = await fetch(APPS_SCRIPT_URL, {
+      await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({ email })
       });
 
-      const data = await response.json();
-
-      if (data.result === 'success' || response.ok) {
-        form.hidden = true;
-        if (successMsg) successMsg.hidden = false;
-      } else {
-        throw new Error(data.message || 'Unknown error');
-      }
+      // no-cors returns opaque response — treat completed fetch as success
+      form.hidden = true;
+      if (successMsg) successMsg.hidden = false;
     } catch (err) {
       console.error('[subscribe] error:', err);
       if (btn) {
         btn.disabled = false;
         btn.textContent = 'Try Again';
       }
-      // Show inline error
       let errEl = document.getElementById('subscribe-error');
       if (!errEl) {
         errEl = document.createElement('p');
