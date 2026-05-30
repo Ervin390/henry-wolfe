@@ -217,7 +217,11 @@
            Option A (Formspree): <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
            Option B (MailerLite): embed MailerLite JS widget instead of this form
            Note: if MailerLite sets a cookie, the disclosure below acts as notice. -->
-      <form id="subscribe-form" class="subscribe-form" novalidate>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" aria-hidden="true"></iframe>
+      <form id="subscribe-form" class="subscribe-form" novalidate
+            action="https://script.google.com/macros/s/AKfycbwc3VwZPoutSfCyWVGQHvD5nac2kX8m5t1DIC7-8II52QZ38jUAB-u-z6UzJ6B3fsQi/exec"
+            method="POST"
+            target="hidden_iframe">
         <div class="form-row">
           <input type="email" id="email-input" name="email" class="email-input" placeholder="your.email@somewhere.com"
             autocomplete="email" required aria-label="Your email address" />

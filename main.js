@@ -106,54 +106,36 @@ if (mobileMenu) {
   });
 }
 
-// --- Newsletter Form — Google Sheets via Apps Script ---
+// --- Newsletter Form — iframe POST to Google Apps Script ---
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwc3VwZPoutSfCyWVGQHvD5nac2kX8m5t1DIC7-8II52QZ38jUAB-u-z6UzJ6B3fsQi/exec';
 
 const form = document.getElementById('subscribe-form');
 const successMsg = document.getElementById('subscribe-success');
 
 if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
+  form.addEventListener('submit', (e) => {
     const emailInput = document.getElementById('email-input');
     const email = emailInput ? emailInput.value.trim() : '';
 
+    // Validate email — if invalid, block submission
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      e.preventDefault();
       emailInput?.focus();
       return;
     }
 
+    // Valid — disable button, let the native form POST to the hidden iframe
     const btn = document.getElementById('subscribe-btn');
     if (btn) {
       btn.disabled = true;
       btn.textContent = 'Subscribing…';
     }
 
-    try {
-      // GET request with email as URL param — most reliable pattern for Apps Script (no CORS preflight)
-      await fetch(`${APPS_SCRIPT_URL}?email=${encodeURIComponent(email)}`, {
-        method: 'GET',
-        mode: 'no-cors'
-      });
-
-      // no-cors returns opaque response — treat completed fetch as success
+    // Show success after short delay (iframe absorbs the response silently)
+    setTimeout(() => {
       form.hidden = true;
       if (successMsg) successMsg.hidden = false;
-    } catch (err) {
-      console.error('[subscribe] error:', err);
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = 'Try Again';
-      }
-      let errEl = document.getElementById('subscribe-error');
-      if (!errEl) {
-        errEl = document.createElement('p');
-        errEl.id = 'subscribe-error';
-        errEl.style.cssText = 'color:#c0392b;margin-top:0.5rem;font-size:0.9rem;';
-        form.appendChild(errEl);
-      }
-      errEl.textContent = 'Something went wrong. Please try again.';
-    }
+    }, 600);
   });
 }
+
